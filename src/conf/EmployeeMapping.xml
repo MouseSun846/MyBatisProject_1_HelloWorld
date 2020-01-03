@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MyBatis.EmployeeMapper">
+<!--   namespace 名称空间
+        id：唯一标识符
+        resulttype：返回值类型
+        #{id}:从传递的参数中取出id值
+        由于引用了别名，故resultType可以使用小写的类名-->
+
+
+    <select id="getEmployeeId" resultType="MyBatis.Employee">
+        select * from employee where id = #{id}
+    </select>
+
+    <select id="getEmpByIdAndLastName" resultType="MyBatis.Employee">
+         select * from employee where id = #{id} and last_name = #{last_name}
+    </select>
+
+
+    <select id="getEmpByMap" resultType="MyBatis.Employee">
+        select * from employee where id = #{id} and last_name = #{last_name}
+    </select>
+
+    <!-- resultType:如果返回的是一个集合，要写集合中元素的类型-->
+    <select id="getEmpByLastNameLike" resultType="MyBatis.Employee">
+        select * from employee where last_name LIKE #{lastName}
+    </select>
+
+    <select id="getEmpByIdReturnMap" resultType="map">
+        select * from employee where id = #{id}
+    </select>
+
+    <select id="getEmpByLastNameLikeReturnMap" resultType="MyBatis.Employee">
+        select * from employee where last_name like #{lastname}
+    </select>
+    <!--mysql支持自增主键，自增主键值得获取，mybatis也是利用statement。getGeneratedKey()
+    eGeneratedKeys="true" 使用自增主键策略
+    keyProperty="id"    指定对应的主键值，也就是mybatis获取到主键值以后，将这个值封装给javaBean的那个属性-->
+
+    <insert id="addEmp" parameterType="MyBatis.Employee" useGeneratedKeys="true" keyProperty="id">
+        insert into employee(last_name,gender,email) values (#{last_name},#{gender},#{email})
+    </insert>
+    <update id="updateEmp">
+        update employee set last_name = #{last_name},gender = #{gender},email = #{email}
+        where id=#{id}
+    </update>
+    <delete id="deleteEmp">
+        delete from employee where id = #{id}
+    </delete>
+</mapper>

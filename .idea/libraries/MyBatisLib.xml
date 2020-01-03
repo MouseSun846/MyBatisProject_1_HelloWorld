@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="MyBatisLib">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../java library/MyBatisLib" />
+      <root url="file://$PROJECT_DIR$/../java library/CommonLib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../java library/CommonLib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../java library/MyBatisLib" recursive="false" />
+  </library>
+</component>
